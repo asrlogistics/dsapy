@@ -18,16 +18,27 @@ def SieveOfEratosthenes(num):
         if prime[p]:
             return prime
 
+class array:
+    def __init__(self,arr):
+        self.arr = arr
 
-def reverse_array(arr):
-    return arr[::-1]
+    def reverse_array(arr):
+        return arr[::-1]
 
 
-def addtoall_array(arr, num):
-    for i in arr:
-        arr[i] += num
-    return arr
+    def addtoall(arr, num):
+        for i in range(len(arr)):
+            arr[i] += num
+        return arr
 
+
+
+    def frequency(arr,k):
+        ct = 0
+        for i in arr:
+            if(k==arr[i]):
+                ct += 1
+        return ct
 
 def primeatn(n):
     try:
@@ -51,14 +62,6 @@ def primeatn(n):
             return prime_numbers[n-1]
     except:
         print("Something went wrong try again with right inputs")
-
-
-def frequency_array(arr,k):
-    ct = 0
-    for i in arr:
-        if(k==arr[i]):
-            ct += 1
-    return ct
 
 def factorial(num):
     fact=1
