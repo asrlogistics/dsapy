@@ -4,7 +4,8 @@ Please share this with your friend too.
 Creaters - Shashwat & Rudransh
 '''
 
-print("Please share this module with your friends if you like it and \n all the functions are available in the documentation : enjoy your CODE!!")
+print("##### Please share this module with your friends if you like it and \n all the functions are available in the documentation \n : enjoy your CODE!! \n \n \n \n")
+
 
 def SieveOfEratosthenes(num):
     prime = [True for i in range(num+1)]
@@ -18,62 +19,58 @@ def SieveOfEratosthenes(num):
         if prime[p]:
             return prime
 
+
 class array:
-    def __init__(self,arr):
+    def __init__(self, arr):
         self.arr = arr
 
-    def reverse_array(arr):
+    def reverse_array(self, arr):
         return arr[::-1]
 
-
-    def addtoall(arr, num):
+    def addtoall(self, arr, num):
         for i in range(len(arr)):
             arr[i] += num
         return arr
 
-
-
-    def frequency(arr,k):
+    def frequency(self, arr, k):
         ct = 0
         for i in arr:
-            if(k==arr[i]):
+            if (k == arr[i]):
                 ct += 1
         return ct
 
-def primeatn(n):
-    try:
-        n = int(n)
-        prime_numbers = [2, 3]
-        i = 3
-        if (0 < n < 3):
-            return prime_numbers[n-1]
-        elif (n > 2):
-            while (True):
-                i += 1
-                status = True
-                for j in range(2, int(i/2)+1):
-                    if (i % j == 0):
-                        status = False
-                        break
-                if (status == True):
-                    prime_numbers.append(i)
-                if (len(prime_numbers) == n):
-                    break
-            return prime_numbers[n-1]
-    except:
-        print("Something went wrong try again with right inputs")
 
-def factorial(num):
-    fact=1
-    yo = 1
-    if(num<1):
-        yo = 0
-        fact = None
-    if(num==1 or num==0):
-        y = 0
+class number:
+    def __init__(self, num):
+        self.num = num
+
+    def factorial(self, num):
         fact = 1
-    if(yo==1):
-        for i in range(1,num+1):
-            fact = fact * i
-    return fact
+        yo = 1
+        if (num < 1):
+            yo = 0
+            fact = None
+        if (num == 1 or num == 0):
+            y = 0
+            fact = 1
+        if (yo == 1):
+            for i in range(1, num+1):
+                fact = fact * i
+        return fact
 
+    def gcd(self, x, y):
+        while (y):
+            x, y = y, x % y
+        return x
+
+    def lcm(self,x, y):
+        if x > y:
+            greater = x
+        else:
+            greater = y
+        while (True):
+            if ((greater % x == 0) and (greater % y == 0)):
+                lcm = greater
+                break
+            greater += 1
+        return lcm
