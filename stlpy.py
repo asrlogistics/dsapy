@@ -24,15 +24,18 @@ class array:
     def __init__(self, arr):
         self.arr = arr
 
-    def reverse_array(self, arr):
+    @staticmethod
+    def reverse_array(arr):
         return arr[::-1]
 
-    def addtoall(self, arr, num):
+    @staticmethod
+    def addtoall(arr, num):
         for i in range(len(arr)):
             arr[i] += num
         return arr
 
-    def frequency(self, arr, k):
+    @staticmethod
+    def frequency(arr, k):
         ct = 0
         for i in arr:
             if (k == arr[i]):
@@ -41,29 +44,29 @@ class array:
 
 
 class number:
-    def __init__(self, num):
+    def __init__(self,num):
         self.num = num
 
-    def factorial(self, num):
+    @staticmethod
+    def factorial(num):
         fact = 1
-        yo = 1
         if (num < 1):
-            yo = 0
             fact = None
-        if (num == 1 or num == 0):
-            y = 0
+        elif (num == 1 or num == 0):
             fact = 1
-        if (yo == 1):
+        else:
             for i in range(1, num+1):
                 fact = fact * i
         return fact
 
-    def gcd(self, x, y):
+    @staticmethod
+    def gcd(x, y):
         while (y):
             x, y = y, x % y
         return x
 
-    def lcm(self,x, y):
+    @staticmethod
+    def lcm(x, y):
         if x > y:
             greater = x
         else:
