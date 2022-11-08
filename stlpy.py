@@ -4,25 +4,23 @@ Please share this with your friend too.
 Creaters - Shashwat & Rudransh
 '''
 
-print("##### Please share this module with your friends if you like it and \n all the functions are available in the documentation \n : enjoy your CODE!! \n \n \n \n")
+print("Hello! from team stlpy (Shashwat and Rudransh)")
 
 
-def SieveOfEratosthenes(num):
-    prime = [True for i in range(num+1)]
-    p = 2
-    while (p * p <= num):
-        if (prime[p] == True):
-            for i in range(p * p, num+1, p):
-                prime[i] = False
-        p += 1
-    for p in range(2, num+1):
-        if prime[p]:
-            return prime
+# def SieveOfEratosthenes(num):
+#     prime = [True for i in range(num+1)]
+#     p = 2
+#     while (p * p <= num):
+#         if (prime[p] == True):
+#             for i in range(p * p, num+1, p):
+#                 prime[i] = False
+#         p += 1
+#     for p in range(2, num+1):
+#         if prime[p]:
+#             return prime
 
 
 class array:
-    def __init__(self, arr):
-        self.arr = arr
 
     @staticmethod
     def reverse_array(arr):
@@ -44,8 +42,30 @@ class array:
 
 
 class number:
-    def __init__(self,num):
-        self.num = num
+    @staticmethod
+    def power(x, y):
+
+        if y == 0:
+            return 1
+        if y % 2 == 0:
+            return number.power(x, y // 2) * number.power(x, y // 2)
+
+        return x * number.power(x, y // 2) * number.power(x, y // 2)
+
+    @staticmethod
+    def order(x):
+        n = 0
+        while (x != 0):
+            n = n + 1
+            x = x // 10
+        return n
+
+    @staticmethod
+    def nthFibonacci(num):
+        if num <= 2:
+            return num - 1
+        else:
+            return number.nthFibonacci(num - 1) + number.nthFibonacci(num - 2)
 
     @staticmethod
     def factorial(num):
@@ -77,3 +97,37 @@ class number:
                 break
             greater += 1
         return lcm
+
+    @staticmethod
+    def nCr(n, r):
+        return (number.factorial(n))/((number.factorial(r))*number.factorial(n-r))
+
+    @staticmethod
+    def nPr(n, r):
+        return (number.factorial(n))/(number.factorial(n-r))
+
+    @staticmethod
+    def isArmstrong(x):
+        n = number.order(x)
+        temp = x
+        sum1 = 0
+        while (temp != 0):
+            r = temp % 10
+            sum1 = sum1 + number.power(r, n)
+            temp = temp // 10
+        return (sum1 == x)
+
+
+class dsa:
+    @staticmethod
+    def binary_search(arr, low, high, key):
+        if high >= low:
+            mid = (high + low) // 2
+            if arr[mid] == key:
+                return mid
+            elif arr[mid] > key:
+                return dsa.binary_search(arr, low, mid - 1, key)
+            else:
+                return dsa.binary_search(arr, mid + 1, high, key)
+        else:
+            return -1
