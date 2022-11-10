@@ -4,6 +4,7 @@ Please share this with your friend too.
 Creaters - Shashwat & Rudransh
 '''
 
+import math as mt
 print("Hello! from team stlpy (Shashwat and Rudransh)")
 
 
@@ -42,6 +43,19 @@ class array:
 
 
 class number:
+    class bit:
+        @staticmethod
+        def setbit(num, k):
+            return (1 << k) or num
+
+        @staticmethod
+        def numberofsetbit(num):
+            count = 0
+            while (num):
+                count += num & 1
+                num >>= 1
+            return count
+
     @staticmethod
     def power(x, y):
 
@@ -117,17 +131,96 @@ class number:
             temp = temp // 10
         return (sum1 == x)
 
+    @staticmethod
+    def isprime(n):
+        prime_flag = 0
+        if (n > 1):
+            for i in range(2, int(mt.sqrt(n)) + 1):
+                if (n % i == 0):
+                    prime_flag = 1
+                    break
+            if (prime_flag == 0):
+                return True
+            else:
+                return False
+        else:
+            return False
+
 
 class dsa:
     @staticmethod
+    def checkSort(arr):
+        flag = 0
+        if (arr == sorted(arr)):
+            flag = 1
+        if (flag):
+            return True
+        else:
+            return False
+
+    @staticmethod
     def binary_search(arr, low, high, key):
-        if high >= low:
-            mid = (high + low) // 2
-            if arr[mid] == key:
-                return mid
-            elif arr[mid] > key:
-                return dsa.binary_search(arr, low, mid - 1, key)
+        if dsa.checkSort(arr):
+            if high >= low:
+                mid = (high + low) // 2
+                if arr[mid] == key:
+                    return mid
+                elif arr[mid] > key:
+                    return dsa.binary_search(arr, low, mid - 1, key)
+                else:
+                    return dsa.binary_search(arr, mid + 1, high, key)
             else:
-                return dsa.binary_search(arr, mid + 1, high, key)
+                return -1
         else:
             return -1
+
+    @staticmethod
+    def bubbleSort(arr):
+        n = len(arr)
+        swapped = False
+        for i in range(n-1):
+            for j in range(0, n-i-1):
+                if arr[j] > arr[j + 1]:
+                    swapped = True
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+            if not swapped:
+                return
+
+    @staticmethod
+    def rotateArray(arr, n, d):
+        temp = []
+        i = 0
+        while (i < d):
+            temp.append(arr[i])
+            i = i + 1
+        i = 0
+        while (d < n):
+            arr[i] = arr[d]
+            i = i + 1
+            d = d + 1
+        arr[:] = arr[: i] + temp
+        return arr
+
+    # NOTE - This function does not return a sorted array , to get a sorted array use dsa.insertionSort() function to do so.
+    @staticmethod
+    def insertion(arr, k, element):
+        newarr = arr.insert(k, element)
+        return newarr
+
+    @staticmethod
+    def insertionSort(arr):
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i-1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+        return arr
+
+    @staticmethod
+    # NOTE-this function have arguments array (arr) and index(key) , there is a inbuilt function too which has arguments array and element , please dont confuse between them
+    def deletion(arr, key):
+        ele = arr[key]
+        arr.remove(ele)
+        return arr
