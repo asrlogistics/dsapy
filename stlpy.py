@@ -1,11 +1,14 @@
 '''
 STLPY is a module which will help you in any competition and your dsa journey
 Please share this with your friend too.
-Creaters - Shashwat & Rudransh
+Creater - Rudransh
 '''
 
 import math as mt
-print("Hello! from team stlpy (Shashwat and Rudransh)")
+import numpy as np
+import itertools as it
+
+print("Hello! from team stlpy (Rudransh) \n \n")
 
 
 # def SieveOfEratosthenes(num):
@@ -24,7 +27,7 @@ print("Hello! from team stlpy (Shashwat and Rudransh)")
 class array:
 
     @staticmethod
-    def reverse_array(arr):
+    def reversearray(arr):
         return arr[::-1]
 
     @staticmethod
@@ -41,20 +44,67 @@ class array:
                 ct += 1
         return ct
 
+    @staticmethod
+    def removeduplicates(arr):
+        res = []
+        [res.append(x) for x in arr if x not in res]
+        return res
+
+    # @staticmethod
+    # def toString(List):
+    #     return ''.join(List)
+
+    @staticmethod
+    def permutations(list1):
+        return list(it.permutations(list1))
+
+    @staticmethod
+    def powerset(s):
+        x = len(s)
+        arr = []
+        for i in range(1 << x):
+            arr.append([s[j] for j in range(x) if (i & (1 << j))])
+        return arr
+
+    @staticmethod
+    def maxSum(arr, k):
+        n = len(arr)
+        if n < k:
+            print("Invalid")
+            return -1
+        window_sum = sum(arr[:k])
+        max_sum = window_sum
+        for i in range(n - k):
+            window_sum = window_sum - arr[i] + arr[i + k]
+            max_sum = max(window_sum, max_sum)
+
+        return max_sum
+
 
 class number:
     class bit:
+        @staticmethod
+        def isSet(n, k):
+            if n & (1 << (k - 1)):
+                return True
+            else:
+                return False
+
         @staticmethod
         def setbit(num, k):
             return (1 << k) or num
 
         @staticmethod
-        def numberofsetbit(num):
+        def countsetbit(num):
             count = 0
             while (num):
                 count += num & 1
                 num >>= 1
             return count
+
+        @staticmethod
+        def flip(num1, num2):
+            return number.bit.countsetbit(num1 ^ num2)
 
     @staticmethod
     def power(x, y):
@@ -146,6 +196,14 @@ class number:
         else:
             return False
 
+    @staticmethod
+    def eulertotient(n):
+        result = 1
+        for i in range(2, n):
+            if (number.gcd(i, n) == 1):
+                result += 1
+        return result
+
 
 class dsa:
     @staticmethod
@@ -159,16 +217,16 @@ class dsa:
             return False
 
     @staticmethod
-    def binary_search(arr, low, high, key):
+    def binarysearch(arr, low, high, key):
         if dsa.checkSort(arr):
             if high >= low:
                 mid = (high + low) // 2
                 if arr[mid] == key:
                     return mid
                 elif arr[mid] > key:
-                    return dsa.binary_search(arr, low, mid - 1, key)
+                    return dsa.binarysearch(arr, low, mid - 1, key)
                 else:
-                    return dsa.binary_search(arr, mid + 1, high, key)
+                    return dsa.binarysearch(arr, mid + 1, high, key)
             else:
                 return -1
         else:
@@ -224,3 +282,56 @@ class dsa:
         ele = arr[key]
         arr.remove(ele)
         return arr
+
+    @staticmethod
+    def mergeSort(arr1, arr2):
+        n1, n2 = len(arr1), len(arr2)
+        arr3 = [None] * (n1 + n2)
+        i = 0
+        j = 0
+        k = 0
+        while i < n1 and j < n2:
+            if arr1[i] < arr2[j]:
+                arr3[k] = arr1[i]
+                k = k + 1
+                i = i + 1
+            else:
+                arr3[k] = arr2[j]
+                k = k + 1
+                j = j + 1
+        while i < n1:
+            arr3[k] = arr1[i]
+            k = k + 1
+            i = i + 1
+        while j < n2:
+            arr3[k] = arr2[j]
+            k = k + 1
+            j = j + 1
+        return arr3
+
+
+class problem:
+    @staticmethod
+    def josephus(n, k):
+        k -= 1
+        arr = [0]*n
+        for i in range(n):
+            arr[i] = 1
+        cnt = 0
+        cut = 0
+        num = 1
+        while (cnt < (n - 1)):
+            while (num <= k):
+                cut += 1
+                cut = cut % n
+                if (arr[cut] == 1):
+                    num += 1
+            num = 1
+            arr[cut] = 0
+            cnt += 1
+            cut += 1
+            cut = cut % n
+            while (arr[cut] == 0):
+                cut += 1
+                cut = cut % n
+        return cut + 1
