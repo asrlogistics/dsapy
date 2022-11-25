@@ -23,6 +23,25 @@ print("Hello! from team stlpy (Rudransh) \n \n")
 #         if prime[p]:
 #             return prime
 
+# def check_user_input(input):
+#     try:
+#         val = int(input)
+#         Exception("It's a int")
+#         return val
+#     except ValueError:
+#         try:
+#             val = float(input)
+#             Exception("Input is a float")
+#         except ValueError:
+#             Exception("It's a string")
+class string:
+    @staticmethod
+    def replaceallwith(string,old,key):
+        return string.replace(old,key)
+
+    @staticmethod
+    def evalcal(str):
+        return eval(str)
 
 class array:
 
@@ -66,7 +85,7 @@ class array:
             arr.append([s[j] for j in range(x) if (i & (1 << j))])
         return arr
 
-    @staticmethod
+    @staticmethod  # susssssy line
     def maxSum(arr, k):
         n = len(arr)
         if n < k:
@@ -80,6 +99,18 @@ class array:
 
         return max_sum
 
+    @staticmethod
+    def Kadane(a):
+        size = len(a)
+        max_so_far = -100000000000000000000000000000000000000000000000000000000000000000000000000000000000 - 1
+        max_ending_here = 0
+        for i in range(0, size):
+            max_ending_here = max_ending_here + a[i]
+            if (max_so_far < max_ending_here):
+                max_so_far = max_ending_here
+            if max_ending_here < 0:
+                max_ending_here = 0
+        return max_so_far
 
 class number:
     class bit:
@@ -203,6 +234,21 @@ class number:
             if (number.gcd(i, n) == 1):
                 result += 1
         return result
+
+    @staticmethod
+    def primearray(upper):
+        result = []
+        for cp in range(2, upper + 1):
+            for i in range(2, cp):
+                if (cp % i == 0):
+                    break
+            else:
+                result.append(cp)
+        return result
+
+    @staticmethod
+    def sumtilln(num):
+        return num*(num+1)/2
 
 
 class dsa:
