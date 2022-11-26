@@ -7,6 +7,7 @@ Creater - Rudransh
 import math as mt
 import numpy as np
 import itertools as it
+from collections import OrderedDict
 
 print("Hello! from team stlpy (Rudransh) \n \n")
 
@@ -43,7 +44,21 @@ class string:
     def evalcal(str):
         return eval(str)
 
+    @staticmethod
+    def removeDupWithOrder(str):
+        return "".join(OrderedDict.fromkeys(str))
+
 class array:
+
+    class matrix:
+        @staticmethod
+        def transpose(matrix):
+            return np.transpose(matrix)
+
+    def __init__(self):
+        self.fallatujf = 1
+        self.matrix = self.matrix()
+
 
     @staticmethod
     def reversearray(arr):
@@ -381,3 +396,135 @@ class problem:
                 cut += 1
                 cut = cut % n
         return cut + 1
+
+    @staticmethod
+    def DutchNationalFlag(a, arr_size):
+        lo = 0
+        hi = arr_size - 1
+        mid = 0
+        # Iterate till all the elements
+        # are sorted
+        while mid <= hi:
+            # If the element is 0
+            if a[mid] == 0:
+                a[lo], a[mid] = a[mid], a[lo]
+                lo = lo + 1
+                mid = mid + 1
+            # If the element is 1
+            elif a[mid] == 1:
+                mid = mid + 1
+            # If the element is 2
+            else:
+                a[mid], a[hi] = a[hi], a[mid]
+                hi = hi - 1
+        return a
+
+    @staticmethod
+    def trappedRainWater(arr, n):
+        res = 0
+        # For every element of the array
+        for i in range(1, n - 1):
+            # Find the maximum element on its left
+            left = arr[i]
+            for j in range(i):
+                left = max(left, arr[j])
+            # Find the maximum element on its right
+            right = arr[i]
+            for j in range(i + 1, n):
+                right = max(right, arr[j])
+            # Update the maximum water
+            res = res + (min(left, right) - arr[i])
+        return res
+
+    @staticmethod
+    def ChocolateDistrubution(arr, n, m):
+        # if there are no chocolates or number
+        # of students is 0
+        if (m == 0 or n == 0):
+            return 0
+        # Sort the given packets
+        arr.sort()
+        # Number of students cannot be more than
+        # number of packets
+        if (n < m):
+            return -1
+        # Largest number of chocolates
+        min_diff = arr[n-1] - arr[0]
+        # Find the subarray of size m such that
+        # difference between last (maximum in case
+        # of sorted) and first (minimum in case of
+        # sorted) elements of subarray is minimum.
+        for i in range(len(arr) - m + 1):
+            min_diff = min(min_diff,  arr[i + m - 1] - arr[i])
+        return min_diff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
