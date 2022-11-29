@@ -37,8 +37,8 @@ print("Hello! from team stlpy (Rudransh) \n \n")
 #             Exception("It's a string")
 class string:
     @staticmethod
-    def replaceallwith(string,old,key):
-        return string.replace(old,key)
+    def replaceallwith(string, old, key):
+        return string.replace(old, key)
 
     @staticmethod
     def evalcal(str):
@@ -47,6 +47,7 @@ class string:
     @staticmethod
     def removeDupWithOrder(str):
         return "".join(OrderedDict.fromkeys(str))
+
 
 class array:
 
@@ -58,7 +59,6 @@ class array:
     def __init__(self):
         self.fallatujf = 1
         self.matrix = self.matrix()
-
 
     @staticmethod
     def reversearray(arr):
@@ -126,6 +126,7 @@ class array:
             if max_ending_here < 0:
                 max_ending_here = 0
         return max_so_far
+
 
 class number:
     class bit:
@@ -459,72 +460,46 @@ class problem:
         return min_diff
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+class stack:
+    def __init__(self):
+        self.head = Node("head")
+        self.size = 0
+
+    def __str__(self):
+        cur = self.head.next
+        out = ""
+        while cur:
+            out += str(cur.value) + ""
+            cur = cur.next
+        return out[:-3]
+
+    def getSize(self):
+        return self.size
+
+    def isEmpty(self):
+        return self.size == 0
+
+    def peek(self):
+        if self.isEmpty():
+            raise Exception("Peeking from an empty stack")
+        return self.head.next.value
+
+    def push(self, value):
+        node = Node(value)
+        node.next = self.head.next
+        self.head.next = node
+        self.size += 1
+
+    def pop(self):
+        if self.isEmpty():
+            raise Exception("Popping from an empty stack")
+        remove = self.head.next
+        self.head.next = self.head.next.next
+        self.size -= 1
+        return remove.value
