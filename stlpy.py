@@ -461,10 +461,48 @@ class problem:
 
 
 class Node:
-    def __init__(self, value):
+    def __init__(self,value):
         self.value = value
         self.next = None
 
+
+class queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0,item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+
+class deque:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push_front(self, item):
+        self.items.append(item)
+
+    def push_back(self, item):
+        self.items.insert(0,item)
+
+    def pop_front(self):
+        return self.items.pop()
+
+    def pop_back(self):
+        return self.items.pop(0)
+
+    def size(self):
+        return len(self.items)
 
 class stack:
     def __init__(self):
