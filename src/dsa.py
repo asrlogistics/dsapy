@@ -1,15 +1,15 @@
 '''
-STLPY is a module which will help you in any competition and your dsa journey
+DSAPY is a module which will help you in any competition and your dsa journey
 Please share this with your friend too.
 Creater - Rudransh
 '''
 
-import math as mt
+#import math as mt
 import numpy as np
 import itertools as it
 from collections import OrderedDict
 
-print("Hello! from team stlpy (Rudransh) \n \n")
+print("Hello! from team dsapy (Rudransh) \n \n")
 
 
 # def SieveOfEratosthenes(num):

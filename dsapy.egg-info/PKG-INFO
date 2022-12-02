@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: dsapy
+Version: 0.0.3
+Summary: A Standard Template Library in Python (for c++ developers)
+Author: Rudransh Bhardwaj
+Author-email: aarti19830@gmail.com
+Keywords: python,dsa,stl,c++,best for me 😁!
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+License-File: LICENCE.txt

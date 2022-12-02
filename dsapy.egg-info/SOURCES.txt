@@ -1,0 +1,11 @@
+LICENCE.txt
+README.md
+setup.py
+dsapy.egg-info/PKG-INFO
+dsapy.egg-info/SOURCES.txt
+dsapy.egg-info/dependency_links.txt
+dsapy.egg-info/requires.txt
+dsapy.egg-info/top_level.txt
+src/__init__.py
+src/dsa.py
+src/testall.py
