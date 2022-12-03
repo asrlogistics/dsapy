@@ -19,7 +19,7 @@ setup(
     author_email="aarti19830@gmail.com",
     description=DESCRIPTION,
     packages=find_packages(),
-    install_requires=['numpy', 'itertools','collections'],
+    install_requires=['numpy1.23.5'],
     keywords=['python', 'dsa','stl','c++','best for me 😁!'],
     classifiers=[
         "Development Status :: 1 - Planning",

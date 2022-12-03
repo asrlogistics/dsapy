@@ -4,10 +4,9 @@ Please share this with your friend too.
 Creater - Rudransh
 '''
 
-#import math as mt
+import math as mt
 import numpy as np
 import itertools as it
-from collections import OrderedDict
 
 print("Hello! from team dsapy (Rudransh) \n \n")
 
@@ -44,9 +43,6 @@ class string:
     def evalcal(str):
         return eval(str)
 
-    @staticmethod
-    def removeDupWithOrder(str):
-        return "".join(OrderedDict.fromkeys(str))
 
 
 class array:

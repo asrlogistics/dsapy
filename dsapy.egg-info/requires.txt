@@ -1,3 +1,1 @@
-numpy
-itertools
-collections
+numpy1.23.5
